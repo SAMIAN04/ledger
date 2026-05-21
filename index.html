@@ -4,6 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>LEDGER – Finance OS</title>
+<link rel="shortcut icon" href="ledger.png" type="image/png">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
@@ -144,7 +145,27 @@ body { background: #030712; color: #fff; font-family: 'DM Sans', -apple-system, 
 .settings-icon { width:36px;height:36px;border-radius:0.625rem;display:flex;align-items:center;justify-content:center;flex-shrink:0; }
 .progress-bar-track { height:6px;background:rgba(255,255,255,0.06);border-radius:3px; }
 .progress-bar-fill { height:100%;border-radius:3px;transition:width 0.6s ease; }
-#mobile-nav { display:none;position:fixed;bottom:0;left:0;right:0;z-index:100;background:rgba(3,7,18,0.95);backdrop-filter:blur(20px);border-top:1px solid rgba(255,255,255,0.08);align-items:center; }
+#mobile-nav{
+    display:none;
+    position:fixed;
+    bottom:0;
+    left:0;
+    right:0;
+    z-index:100;
+
+    background:rgba(3, 3, 3, 0.486);
+    backdrop-filter:blur(24px) saturate(180%);
+    -webkit-backdrop-filter:blur(24px) saturate(180%);
+
+     border-top-left-radius:3rem;
+    border-top-right-radius:3rem;
+
+    box-shadow:0 -8px 32px rgba(0,0,0,0.25);
+    border:0.3px  rgb(0,255,149);
+
+    align-items:center;
+    overflow:hidden;
+}
 .mob-nav-btn { flex:1;background:none;border:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:0.25rem;padding:0.5rem 0;color:#475569;font-family:'DM Sans',sans-serif; }
 .mob-nav-btn.active { color:#22c55e; }
 .mob-nav-btn span { font-size:0.6rem;font-weight:500; }
@@ -196,7 +217,7 @@ body { background: #030712; color: #fff; font-family: 'DM Sans', -apple-system, 
 <div id="auth-screen" style="display:none;">
   <div class="auth-box">
     <div class="auth-logo">
-      <div class="auth-logo-icon">₹</div>
+      <div class="auth-logo-icon "><img src="ledger.png" style="height: 60px; border-radius: 18px;" alt="" srcset=""></div>
       <div class="auth-logo-title">LEDGER</div>
       <div class="auth-logo-sub">FINANCE OS</div>
     </div>
@@ -207,14 +228,33 @@ body { background: #030712; color: #fff; font-family: 'DM Sans', -apple-system, 
     <div class="auth-err" id="auth-err"></div>
     <div id="auth-form-login">
       <div class="field"><label>Email</label><input class="input-field" id="login-email" type="email" placeholder="you@example.com" /></div>
-      <div class="field"><label>Password</label><input class="input-field" id="login-password" type="password" placeholder="••••••••" /></div>
+<div class="field">
+  <label>Password</label>
+  <div style="position:relative;">
+    <input class="input-field" id="login-password" type="password" placeholder="••••••••" style="padding-right:60px;" />
+    
+    <span onclick="document.getElementById('login-password').type = document.getElementById('login-password').type==='password' ? 'text' : 'password'; this.innerHTML = document.getElementById('login-password').type==='password' ? 'Show' : 'Hide';"
+    style="position:absolute;right:12px;top:50%;transform:translateY(-50%);cursor:pointer;font-size:13px;color:#777;">
+      Show
+    </span>
+  </div>
+</div>
       <button class="auth-submit" id="login-btn" onclick="doLogin()">Sign In</button>
     </div>
     <div id="auth-form-signup" style="display:none;">
       <div class="field"><label>Display Name</label><input class="input-field" id="signup-name" placeholder="Your name" /></div>
       <div class="field"><label>Email</label><input class="input-field" id="signup-email" type="email" placeholder="you@example.com" /></div>
-      <div class="field"><label>Password</label><input class="input-field" id="signup-password" type="password" placeholder="At least 6 characters" /></div>
-      <button class="auth-submit" id="signup-btn" onclick="doSignup()">Create Account</button>
+<div class="field">
+  <label>Password</label>
+  <div style="position:relative;">
+    <input class="input-field" id="signup-password" type="password" placeholder="At least 6 characters" style="padding-right:60px;" />
+    
+    <span onclick="document.getElementById('signup-password').type = document.getElementById('signup-password').type==='password' ? 'text' : 'password'; this.innerHTML = document.getElementById('signup-password').type==='password' ? 'Show' : 'Hide';"
+    style="position:absolute;right:12px;top:50%;transform:translateY(-50%);cursor:pointer;font-size:13px;color:#777;">
+      Show
+    </span>
+  </div>
+</div>      <button class="auth-submit" id="signup-btn" onclick="doSignup()">Create Account</button>
     </div>
   </div>
 </div>
